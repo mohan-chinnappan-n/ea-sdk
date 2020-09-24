@@ -1,5 +1,10 @@
 # Einstein Analytics SDK
 
+## Topics
+- [Analytics Web SDK Events](#websdk)
+- [References](#ref)
+
+
 - Analytics SDK lets you communicate and interact with Analytics assets from Lightning Apps, Apex, Visualforce, and more.
 - You can access the power of REST APIs to retrieve collections of Analytics assets, such as dashboards, lenses, and datasets and describe the details of individual assets. 
     - Customize the display of the results via a Lightning Component controller.
@@ -97,9 +102,6 @@
     - has two attributes
         -  unique ID of the page to display
         - fully qualified developer name of the Analytics dashboard 
-## Topics
-- [References](#ref)
-
 
 
 <a name='ref'></a>
