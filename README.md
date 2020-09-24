@@ -35,6 +35,53 @@
                 — the name of the step involved when changing the selection 
                 - an **array of objects** representing the current selection. 
                     - Each object in the array contains one or more attributes based on the selection.
+        - [Analytics Web SDK Events - SelectionChanged Event](https://developer.salesforce.com/docs/atlas.en-us.bi_dev_guide_sdk.meta/bi_dev_guide_sdk/bi_sdk_web_example2.htm)
+```js
+({
+  handleSelectionChanged: function(component, event, helper) {
+    var params = event.getParams();
+    var payload = params.payload;
+    if (payload) {
+      var step = payload.step;
+      var data = payload.data; // array representing the current selection.
+      data.forEach(function(obj) {
+        for (var k in obj) {
+          if (k === 'Id') {
+            component.set("v.recordId", obj[k]);                        
+          }
+        }
+      });
+    }
+  }
+})
+```
+    - The dashboard component also generates Lightning events when the user changes a selection
+```xml
+aura:component implements="force:appHostable,
+                flexipage:availableForAllPageTypes,
+                flexipage:availableForRecordHome,
+                force:hasRecordId,
+                forceCommunity:availableForAllPageTypes,
+                force:lightningQuickAction"
+                access="global" >
+  <aura:handler event="wave:selectionChanged" action="{!c.handleSelectionChanged}"/>
+  <aura:attribute name="msg" type="String" default="Please make a selection in Analytics that contains a record ID" access="GLOBAL"/>
+  <aura:attribute name="recordId" type="String" default="" access="GLOBAL"/>
+  <aura:dependency resource="markup://force:navigateToSObject" type="EVENT"/>        
+  <div class="container">
+    <aura:if isTrue="{!v.recordId == ''}">
+      <div class="msg">
+        {!v.msg}
+      </div>
+      <aura:set attribute="else">
+        <force:recordView recordId="{!v.recordId}"/> 
+      </aura:set>
+    </aura:if>
+  </div>	
+</aura:component>
+```
+
+
 - **wave:discover**
     - sends a global request to identify Analytics dashboard assets.
     -  response is a **wave:discoverResponse** event
