@@ -16,9 +16,9 @@
 
 <a name='websdk'></a>
 ## Analytics Web SDK Events
-- wave:assetLoaded
+- **wave:assetLoaded**
     - After this event is received, you can safely reapply mandatory filters or resync the dashboard state.
-- wave:update
+- **wave:update**
     - dynamically set the **filter** on an Analytics dashboard or interact with the dashboard by dynamically changing the selection.
     - 4 attributes
         1. unique ID of the Analytics asset on which to apply the filter, 
@@ -26,7 +26,7 @@
             - The payload is a JSON string that identifies the datasets and any dimensions and field values.
         3. the asset type (currently only dashboard), 
         4. fully qualified developer name of the Analytics dashboard. 
-- wave:selectionChanged
+- **wave:selectionChanged**
     -  fires this event for consumption by custom Aura components
     -  provides attributes
         1. the ID of the dashboard that fired the event 
@@ -35,7 +35,7 @@
                 — the name of the step involved when changing the selection 
                 - an **array of objects** representing the current selection. 
                     - Each object in the array contains one or more attributes based on the selection.
-- wave:discover
+- **wave:discover**
     - sends a global request to identify Analytics dashboard assets.
     -  response is a **wave:discoverResponse** event
         - fired by listening to Analytics dashboard assets in response to the **wave:discover** event.
@@ -45,7 +45,7 @@
                 3. the dashboard title, 
                 4. whether the dashboard is still loading, 
                 5. any optional parameter sent with the request
-- wave:discoverResponse
+- **wave:discoverResponse**
     - Use this event to update the Analytics dashboard page that is displayed. 
     - has two attributes
         -  unique ID of the page to display
