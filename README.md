@@ -55,7 +55,7 @@
   }
 })
 ```
-    - The dashboard component also generates Lightning events when the user changes a selection
+    - The dashboard component generates Lightning events when the user changes a selection
 ```xml
 <aura:component implements="force:appHostable,
                 flexipage:availableForAllPageTypes,
