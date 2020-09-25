@@ -1,10 +1,10 @@
-# How to execute run SAQL in Apex
+# How to execute run SAQL in Apex using Analytics Apex SDK
 
 ## Topics
 
 - [Execute one query](#q1)
 - [Execute 2 queries](#q2)
-
+- [References](#ref)
 
 <a name='q1'></a>
 ### Create apex code file for this lens
@@ -141,4 +141,6 @@ executed?: false
   exceptionMessage: 'System.CalloutException: You have uncommitted work pending. Please commit or rollback before calling out'
 }
 ```
+## References
+- [Analytics SDK Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.bi_dev_guide_sdk.meta/bi_dev_guide_sdk/bi_sdk_apex.htm)
 
