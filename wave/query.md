@@ -7,7 +7,7 @@
 
 
 <a name='q1'></a>
-### Create apex code file
+### Create apex code file for this lens
 ![lens 0](img/fruits-saql-0.png)
 ```
 $ cat ~/.ea/fruits.cls
@@ -59,7 +59,7 @@ executed?: true
 ```
 
 <a name='q2'></a>
-## Let us execute 2 queries
+## Let us execute 2 queries with query for this lens as well
 ![lens 2](img/fruits-saql-1.png)
 ### Apex code
 ```   
