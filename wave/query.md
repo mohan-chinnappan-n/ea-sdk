@@ -141,6 +141,55 @@ executed?: false
   exceptionMessage: 'System.CalloutException: You have uncommitted work pending. Please commit or rollback before calling out'
 }
 ```
+
+
+### Looking at the logs
+```
+$ sfdx mohanc:data:query -u mohan.chinnappan.n_ea2@gmail.com -q ~/.ea/apexlog.soql 
+"attributes","Id"
+"{""type"":""ApexLog"",""url"":""/services/data/v49.0/sobjects/ApexLog/07L3h000003ZqnVEAS""}","07L3h000003ZqnVEAS"
+"{""type"":""ApexLog"",""url"":""/services/data/v49.0/sobjects/ApexLog/07L3h000003ZozoEAC""}","07L3h000003ZozoEAC"
+"{""type"":""ApexLog"",""url"":""/services/data/v49.0/sobjects/ApexLog/07L3h000003ZozjEAC""}","07L3h000003ZozjEAC"
+"{""type"":""ApexLog"",""url"":""/services/data/v49.0/sobjects/ApexLog/07L3h000003ZozUEAS""}","07L3h000003ZozUEAS"
+"{""type"":""ApexLog"",""url"":""/services/data/v49.0/sobjects/ApexLog/07L3h000003Zoz5EAC""}","07L3h000003Zoz5EAC"
+"{""type"":""ApexLog"",""url"":""/services/data/v49.0/sobjects/ApexLog/07L3h000003ZoujEAC""}","07L3h000003ZoujEAC"
+"{""type"":""ApexLog"",""url"":""/services/data/v49.0/sobjects/ApexLog/07L3h000003ZomnEAC""}","07L3h000003ZomnEAC"
+"{""type"":""ApexLog"",""url"":""/services/data/v49.0/sobjects/ApexLog/07L3h000003ZoAiEAK""}","07L3h000003ZoAiEAK"
+"{""type"":""ApexLog"",""url"":""/services/data/v49.0/sobjects/ApexLog/07L3h000003ZoTpEAK""}","07L3h000003ZoTpEAK"
+"{""type"":""ApexLog"",""url"":""/services/data/v49.0/sobjects/ApexLog/07L3h000003ZoUqEAK""}","07L3h000003ZoUqEAK"
+```
+```
+$ cat ~/.ea/apexlog.soql
+```
+```sql
+SELECT id FROM ApexLog
+   ORDER BY LastModifiedDate DESC
+```
+
+```
+$ sfdx mohanc:ws:rest -m GET -r https://mohansun-ea-02-dev-ed.my.salesforce.com/services/data/v49.0/tooling/sobjects/ApexLog/07L3h000003ZqnVEAS -f header.json 
+```
+```json
+{
+    "attributes": {
+        "type": "ApexLog",
+        "url": "/services/data/v49.0/tooling/sobjects/ApexLog/07L3h000003ZqnVEAS"
+    },
+    "Id": "07L3h000003ZqnVEAS",
+    "LogUserId": "0053h000002xQ5sAAE",
+    "LogLength": 10152,
+    "LastModifiedDate": "2020-09-25T16:14:33.000+0000",
+    "Request": "Api",
+    "Operation": "/services/data/v49.0/tooling/executeAnonymous/",
+    "Application": "Unknown",
+    "Status": "You have uncommitted work pending. Please commit or rollback before calling out", <==============
+    "DurationMilliseconds": 340,
+    "SystemModstamp": "2020-09-25T16:14:33.000+0000",
+    "StartTime": "2020-09-25T16:14:33.000+0000",
+    "Location": "SystemLog",
+    "RequestIdentifier": "4YVHv2wIPAJUzfX2-pk0Z-"
+}
+```
 <a name='ref'></a>
 ## References
 - [Analytics SDK Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.bi_dev_guide_sdk.meta/bi_dev_guide_sdk/bi_sdk_apex.htm)
