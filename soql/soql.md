@@ -3,7 +3,7 @@
 ## Query
 - Success
  ```sql
-SELECT Id,Email,Name2 FROM User
+SELECT Id,Email,Name FROM User
 ```
 
 - Failed
