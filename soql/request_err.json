@@ -1,0 +1,2 @@
+{"actions":[{"id":"77;a","descriptor":"serviceComponent://ui.insights.components.wavePage.WavePageAuraController/ACTION$executeSoqlQuery","callingDescriptor":"UNKNOWN","params":{"query":"SELECT Id,Email,Name2 FROM User\n"}}]}
+
